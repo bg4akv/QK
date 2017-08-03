@@ -2,15 +2,14 @@
 
 function setAffairIds(affairId)
 {
-	var input = document.getElementById("affairId");
-	input.value = affairId;
-
+	//var input = document.getElementById("affairId");
+	//input.value = affairId;
+	$("#affairId").val(affairId);
+	
 	document.getElementById("collaboration").submit();
 	
-	var doc
-	do {
-		doc = getDocInFrame(document, "origin");
-	} while (doc.readyState != "complete");
+	//var doc = getDocInFrame(document, "origin");
+
 }
 
 function generateCSVAuto(frameIds, outFrameId, fields)
@@ -20,10 +19,11 @@ function generateCSVAuto(frameIds, outFrameId, fields)
 
 	for (var i in buttons) {
 		buttons[i].click();
-		//do {
-			//doc = getDocInFrame(document, "origin");
-		//} while (doc.readyState != "interactive");
-		generateCSV(frameIds, outFrameId, fields);
+		doc = getDocInFrame(document, "origin");
+		$(doc).ready(function() {
+
+			generateCSV(frameIds, outFrameId, fields);
+		});
 	}
 }
 
@@ -52,10 +52,6 @@ function fetchAffairIds(frameIds, tableId, outFrameId)
 	clearDoc(doc);
 
 	for (var i = 0; i < rows.length; i++) {
-		if (i > 0 && i % 5 == 0) {
-			doc.write("<br>");
-		}
-	
 		var cell = rows[i].cells[1];
 		var afId = cell.innerHTML.match(/affairId=(\-)?[0-9]+/)[0].match(/(\-)?[0-9]+/)[0];
 

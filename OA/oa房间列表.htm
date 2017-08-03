@@ -1,0 +1,37 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<head>
+		<script src="../js/jquery.js"> </script>
+		<script src="../js/util.js"> </script>
+		<script src="js/oa.js"> </script>
+	</head>
+
+	<body>
+		<a href="oaIndex.htm">返回</a>
+		<h3 id="title">OA 房间列表</h3>
+
+		<iframe id="origin" width="860" height="100" scrolling="auto"></iframe>
+
+		<form action="http://oa.qk365.com/Room_List2.aspx" method="get" target="origin">
+			<select name="area">
+				<option value="3"> </option>
+			</select>
+
+			<input type="submit" value="Get Page">
+			<input type="button" value="Fetch Areas" onclick=fetchAreas(["origin"],"areas");clearDocInFrame(document,"csv")>
+		</form>
+
+		<iframe id="areas" width="860" height="300" scrolling="auto"></iframe>
+
+		<br><br>
+
+		<form id="roomList" action="http://oa.qk365.com/Room_List2.aspx" method="get" target="origin">
+			Area: <input type="text" id="area" name="area" value=""><br/>
+			<input type="submit" value="Get Page" disabled=true>
+			<input type="button" onclick=clearAreaInput();generateCSV(["origin"],"csv") value="Generate CSV">
+		</form>
+
+		<iframe id="curr" width="860" height="30"  scrolling="auto"></iframe>
+		<iframe id="csv" width="860" height="450"  scrolling="auto"></iframe>
+	</body>
+</html>
