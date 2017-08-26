@@ -55,8 +55,8 @@ function fetchAffairIds(frameIds, tableId, outFrameId)
 		var cell = rows[i].cells[1];
 		var afId = cell.innerHTML.match(/affairId=(\-)?[0-9]+/)[0].match(/(\-)?[0-9]+/)[0];
 
-		doc.write("<button type=\"button\" onclick=disabled=true;window.parent.setAffairIds(\"" + afId + "\")>");
-		doc.write(afId);
+		doc.write("<button type=\"button\" style=\"width:80px;height:50px;\" onclick=disabled=true;window.parent.setAffairIds(\"" + afId + "\")>");
+		doc.write(i + 1);
 		doc.write("</button>");
 	}
 }

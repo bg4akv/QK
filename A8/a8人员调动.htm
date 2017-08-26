@@ -22,8 +22,8 @@
 				<option value="createDate">发起时间</option>
 			</select>
 			<input type="text" id="textfield" name="textfield" value="人员调动"><br/>
-			<input type="submit" value="Get Page">
-			<input type="button" value="Fetch Affair IDs" onclick=fetchAffairIds(["origin"],"bTablepending","affairIds");clearDocInFrame(document,"csv")>
+			<input type="submit" style="height:50px;" value="Get Page">
+			<input type="button" style="height:50px;" value="Fetch Affair IDs" onclick=fetchAffairIds(["origin"],"bTablepending","affairIds");clearDocInFrame(document,"csv")>
 		</form>
 
 		<iframe id="affairIds" width="860" height="120" scrolling="auto"></iframe>
@@ -33,9 +33,9 @@
 		<form id="collaboration" action="http://a8.qk365.com/seeyon/collaboration.do" method="get" target="origin">
 			affairId: <input type="text" id="affairId" name="affairId" value=""><br/>
 			<input type="hidden" name="method" value="detail">
-			<input type="submit" value="Get Page" disabled=true>
-			<input type="button" onclick=clearAffairIdInput();generateCSV(["origin","detailMainFrame","contentIframe"],"csv",["my:表单编号","my:姓名","my:调整前部门","my:调整后部门","my:调整前岗位","my:调整后岗位","my:调整生效日期"]) value="Generate CSV">
-			<input type="button" onclick=generateCSVAuto(["origin","detailMainFrame","contentIframe"],"csv",["my:表单编号","my:姓名","my:调整前部门","my:调整后部门","my:调整前岗位","my:调整后岗位","my:调整生效日期"]) value="Generate CSV Auto">
+			<input type="submit" style="height:50px;" value="Get Page" disabled=true>
+			<input type="button" style="height:50px;" onclick=clearAffairIdInput();generateCSV(["origin","detailMainFrame","contentIframe"],"csv",["my:表单编号","my:姓名","my:调整前部门","my:调整后部门","my:调整前岗位","my:调整后岗位","my:调整生效日期"]) value="Generate CSV">
+			<input type="button" style="height:50px;" onclick=generateCSVAuto(["origin","detailMainFrame","contentIframe"],"csv",["my:表单编号","my:姓名","my:调整前部门","my:调整后部门","my:调整前岗位","my:调整后岗位","my:调整生效日期"]) value="Generate CSV Auto">
 		</form>
 
 		<iframe id="curr" width="860" height="30"  scrolling="auto"></iframe>
