@@ -9,7 +9,6 @@ function setAffairIds(affairId)
 	document.getElementById("collaboration").submit();
 	
 	//var doc = getDocInFrame(document, "origin");
-
 }
 
 function generateCSVAuto(frameIds, outFrameId, fields)
@@ -17,13 +16,23 @@ function generateCSVAuto(frameIds, outFrameId, fields)
 	var doc = getDocInFrame(document, "affairIds");
 	var buttons = doc.getElementsByTagName("button");
 
-	for (var i in buttons) {
-		buttons[i].click();
-		doc = getDocInFrame(document, "origin");
-		$(doc).ready(function() {
+	doc = getDocInFrame(document, "origin");
+	var iframe = document.getElementById("origin");
 
-			generateCSV(frameIds, outFrameId, fields);
-		});
+	for (var i in buttons) {
+		if (!buttons[i].disabled) {
+			iframe.src = "www.google.com"; 
+
+			$(doc).ready(function() {
+				setTimeout(function() {
+					generateCSV(frameIds, outFrameId, fields);
+				}, 800);
+			});
+			
+			buttons[i].click();
+			buttons[i].style.color = "red";
+			break;
+		}
 	}
 }
 
