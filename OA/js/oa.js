@@ -29,9 +29,35 @@ function fetchAreas(frameIds, outFrameId)
 
 		var area = opt.value;
 
-		doc.write("<button type=\"button\" onclick=disabled=true;window.parent.setArea(\"" + area + "\")>");
+		doc.write("<button type=\"button\" style=\"width:80px;height:50px;\" onclick=disabled=true;window.parent.setArea(\"" + area + "\")>");
 		doc.write(opt.value + "-" + opt.text);
+		//doc.write(i + 1);
 		doc.write("</button>");
+	}
+}
+
+function generateCSVAuto(frameIds, outFrameId)
+{
+	var doc = getDocInFrame(document, "areas");
+	var buttons = doc.getElementsByTagName("button");
+
+	doc = getDocInFrame(document, "origin");
+	var iframe = document.getElementById("origin");
+
+	for (var i in buttons) {
+		if (!buttons[i].disabled) {
+			iframe.src = "www.google.com"; 
+
+			$(doc).ready(function() {
+				setTimeout(function() {
+					generateCSV(frameIds, outFrameId);
+				}, 800);
+			});
+			
+			buttons[i].click();
+			buttons[i].style.color = "red";
+			break;
+		}
 	}
 }
 
@@ -42,8 +68,9 @@ function generateCSV(frameIds, outFrameId)
 	sel.selectedIndex;
 	var opt = sel.options[sel.selectedIndex];
 
-	var total = doc.getElementById("MyPager1_lblRsCount").innerHTML;
-
+	//var total = doc.getElementById("chk_5").text;
+	var total = doc.getElementsByTagName("label")[6].innerHTML;
+	
 	var csv = opt.value + "," + opt.text + "," + total;
 
 	doc = getDocInFrame(document, outFrameId);

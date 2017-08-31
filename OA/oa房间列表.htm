@@ -17,8 +17,8 @@
 				<option value="3"> </option>
 			</select>
 
-			<input type="submit" value="Get Page">
-			<input type="button" value="Fetch Areas" onclick=fetchAreas(["origin"],"areas");clearDocInFrame(document,"csv")>
+			<input type="submit" style="height:50px;" value="Get Page">
+			<input type="button" style="height:50px;" value="Fetch Areas" onclick=fetchAreas(["origin"],"areas");clearDocInFrame(document,"csv")>
 		</form>
 
 		<iframe id="areas" width="860" height="300" scrolling="auto"></iframe>
@@ -27,8 +27,9 @@
 
 		<form id="roomList" action="http://oa.qk365.com/Room_List2.aspx" method="get" target="origin">
 			Area: <input type="text" id="area" name="area" value=""><br/>
-			<input type="submit" value="Get Page" disabled=true>
-			<input type="button" onclick=clearAreaInput();generateCSV(["origin"],"csv") value="Generate CSV">
+			<input type="submit" style="height:50px;" value="Get Page" disabled=true>
+			<input type="button" style="height:50px;" onclick=clearAreaInput();generateCSV(["origin"],"csv") value="Generate CSV">
+			<input type="button" style="height:50px;" onclick=generateCSVAuto(["origin"],"csv") value="Generate CSV Auto">
 		</form>
 
 		<iframe id="curr" width="860" height="30"  scrolling="auto"></iframe>
