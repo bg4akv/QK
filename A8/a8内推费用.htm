@@ -1,0 +1,44 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<head>
+		<script src="../js/jquery.js"> </script>
+		<script src="../js/util.js"> </script>
+		<script src="js/a8.js"> </script>
+	</head>
+
+	<body>
+		<a href="a8Index.htm">返回</a>
+		<h3 id="title">A8 内推费用</h3>
+
+		<iframe id="origin" width="860" height="60" scrolling="auto"></iframe>
+
+		<form action="http://a8.qk365.com/seeyon/main.do" method="get" target="origin">
+			<input type="hidden" name="method" value="morePending4App">
+			<input type="hidden" name="app" value="Coll">
+			<select id="condition" name="condition">
+				<option value="">--查询条件--</option>
+				<option value="subject" selected=true>标题</option>
+				<option value="sender">发起人</option>
+				<option value="createDate">发起时间</option>
+			</select>
+			<input type="text" id="textfield" name="textfield" value="内推费用"><br/>
+			<input type="submit" style="height:50px;" value="Get Page">
+			<input type="button" style="height:50px;" value="Fetch Affair IDs" onclick=fetchAffairIds(["origin"],"bTablepending","affairIds");clearDocInFrame(document,"csv")>
+		</form>
+
+		<iframe id="affairIds" width="860" height="120" scrolling="auto"></iframe>
+
+		<br><br>
+
+		<form id="collaboration" action="http://a8.qk365.com/seeyon/collaboration.do" method="get" target="origin">
+			affairId: <input type="text" id="affairId" name="affairId" value=""><br/>
+			<input type="hidden" name="method" value="detail">
+			<input type="submit" style="height:50px;" value="Get Page" disabled=true>
+			<input type="button" style="height:50px;" onclick=clearAffairIdInput();generateCSV(["origin","detailMainFrame","contentIframe"],"csv",["my:表单编号","my:姓名","my:部门","my:被推荐者","my:被推荐者部门"]) value="Generate CSV">
+			<input type="button" style="height:50px;" onclick=generateCSVAuto(["origin","detailMainFrame","contentIframe"],"csv",["my:表单编号","my:姓名","my:部门","my:被推荐者","my:被推荐者部门"]) value="Generate CSV Auto">
+		</form>
+
+		<iframe id="curr" width="860" height="30"  scrolling="auto"></iframe>
+		<iframe id="csv" width="860" height="450"  scrolling="auto"></iframe>
+	</body>
+</html>
